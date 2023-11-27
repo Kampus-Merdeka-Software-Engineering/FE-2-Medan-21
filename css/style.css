@@ -111,7 +111,7 @@ body {
       rgba(240, 240, 240, 0.144),
       rgba(255, 255, 255, 0.336)
     ),
-    url("images/bg.jpg");
+    url(bg.jpg);
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -129,11 +129,11 @@ body {
 .main-title {
   text-transform: uppercase;
   margin-top: 1.5em;
-  color: #fff;
+  color: #ffffff;
 }
 
 .showcase-container p {
-    color: #fff;
+    color: #ffffff;
 }
 
 /* ......//about us//...... */
