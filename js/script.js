@@ -28,11 +28,11 @@ window.onscroll = () =>{
     cartItem.classList.remove('active');
 }
 
-function tambahKeKeranjang() {
+function tambahKeKeranjang(idbarang) {
     // Lakukan operasi penambahan ke keranjang di sini
     
     // Tampilkan alert
-    alert("Produk berhasil ditambahkan ke keranjang!");
+    alert("Produk " + idbarang + " berhasil ditambahkan ke keranjang!");
 }
 
 // checkout
