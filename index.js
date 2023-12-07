@@ -12,9 +12,8 @@ app.use(cors({
     origin: '*',
 }))
 app.use(express.json()); //to accept data in json format 
-app.use(express.urlencoded()); //to decode the data send through html form
-app.use(express.static('frend')); //to serve our public folder as static folder
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true })); //to decode the data send through html form
+app.use(express.static('./')); //to serve our public folder as static folder 
 
 //API Routes
 
@@ -24,13 +23,13 @@ app.post('/formpostr', async function (req,res) {
     await console.log(req.body);
     const param = req.body;
     const name = param.name;
-    // const phone = param.phone;
+    const username = param.username;
     const email = param.email;
     const password = param.password;
     const now = new Date();
 
-    const queryStr = "INSERT INTO regis (name, phone, email, password, created_at) VALUES (?, ?, ?, ?, ?)";
-    const values = [name, phone, email, password, now]
+    const queryStr = "INSERT INTO akun (name, username, email, password, created_at) VALUES (?, ?, ?, ?, ?)";
+    const values = [name, username, email, password, now]
 
     conn.query(queryStr, values, (err, results) => {
         if (err) {
@@ -56,7 +55,7 @@ app.post('/formpostl', async function (req, res){
     const param = req.body;
     const email = param.email;
     const password = param.password;
-    const queryLgn = "SELECT email, password FROM regis WHERE email = ?";
+    const queryLgn = "SELECT email, password FROM akun WHERE email = ?";
     const values = [email]
     conn.query(queryLgn, values, (err, results) => {
         if (err) {
@@ -86,3 +85,32 @@ app.post('/formpostl', async function (req, res){
         }
     })
 })
+
+app.get('/formgeta', async function (req, res){
+    await console.log(req.body);
+    const param = req.body;
+    const idBarang = param.idBarang;
+    const queryCart = "SELECT namaBarang, hargaBarang FROM item WHERE idBarang = ?";
+    const values = [idBarang]
+    conn.query(queryCart, values, (err, results) => {
+        if (err) {
+            console.log(err);
+            res.status(500).json({
+                "success": false,
+                "message" : err.sqlMessage,
+                "data" : null
+            });
+        } else {
+            res.status(200).json({
+                "success" : true,
+                "message" : "sukses menambahkan barang",
+                "data" : results
+            });
+        }
+    })
+})
+
+
+app.listen(port, ()=>{
+    console.log("server started on port 3003");
+});

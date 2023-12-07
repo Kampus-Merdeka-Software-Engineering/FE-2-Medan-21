@@ -9,14 +9,14 @@
 
         <div class="container">
           <h1>Login</h1>
-            <form id="loginForm">
-                <label for="loginUsername">Username:</label>
-                <input type="text" id="loginUsername" required>
+          <form action="/formpostl" method="POST" id="loginForm">
+                <label for="loginEmail">Email:</label>
+                <input id="email" name="email" type="email" id="loginEmail" required>
                 <br>
                 <label for="loginPassword">Password:</label>
-                <input type="password" id="loginPassword" required>
+                <input id="password" name="password" type="password" id="loginPassword" required>
                 <br>
-                <button type="button" onclick="login()">Login</button>
+                <button type="submit" onclick="login()">Login</button>
 
                 <p> Dont Have An Account?
                     <a href="register.html">Click Here</a>
@@ -25,13 +25,40 @@
         </div>     
 
     <script>
+        // domain website
+        const baseUrl = "localhost:3003/";
+
         // Simulasi basis data untuk menyimpan informasi pengguna
-        var userDatabase = [];
+        //var userDatabase = [];
 
         function login() {
-            var username = document.getElementById("loginUsername").value;
+            var email = document.getElementById("loginEmail").value;
             var password = document.getElementById("loginPassword").value;
 
+            const submitData = {
+                email: email,
+                password: password
+            };
+
+            // pakai API dari backend untuk login
+            fetch(`${baseUrl}formpostl`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(submitData)
+            })
+            .then(response => response.json())
+            .then((res) => {
+                console.log("test", res)
+                alert("login berhasil");
+                window.location.href = `${baseUrl}login.html`;
+            })
+            .catch((error) => {
+                alert(`Error Massage: ${error.massage}`);
+            });
+
+            /*
             // Periksa apakah pengguna ada di basis data
             var userExists = userDatabase.some(function(user) {
                 return user.username === username && user.password === password;
@@ -42,12 +69,45 @@
             } else {
                 alert("Login gagal. Periksa kembali username dan password Anda.");
             }
+            */
         }
 
         function register() {
+            var name = document.getElementById("registerName").value;
             var username = document.getElementById("registerUsername").value;
             var password = document.getElementById("registerPassword").value;
+            var email = document.getElementById("registerEmail").value;
+            
 
+            // data yang akan dikirimkan ke API register
+            const submitData = {
+                name: name,
+                username: username,
+                email: email,
+                password: password
+            };
+
+            
+            // pakai API dari backend untuk register
+            fetch(`${baseUrl}formpostr`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(submitData)
+            })
+            .then(response => response.json())
+            .then((res) => {
+                console.log("test", res)
+                alert("register berhasil");
+                window.location.href = `${baseUrl}register.html`;
+            })
+            .catch((error) => {
+                alert(`Error Massage: ${error.massage}`);
+            });
+
+
+            /*
             // Periksa apakah username sudah digunakan
             var usernameExists = userDatabase.some(function(user) {
                 return user.username === username;
@@ -60,6 +120,7 @@
                 userDatabase.push({ username: username, password: password });
                 alert("Registrasi berhasil!");
             }
+            */
         }
     </script>
 </body>
