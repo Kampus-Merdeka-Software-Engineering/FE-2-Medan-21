@@ -1,8 +1,6 @@
 const baseUrl = "https://be-2-medan-21-production.up.railway.app/";
 
 let formRegister = document.getElementById("registerForm");
-//const display = document.querySelector("div[name='hasil-query2']")
-//display.innerHTML = ""
 
 formRegister.addEventListener("submit", (event) =>{
     console.log("submitted");
@@ -43,6 +41,6 @@ formRegister.addEventListener("submit", (event) =>{
             window.location.href = "./login.html";
         })
         .catch((error) => {
-            alert(`Error Massage: ${error.massage}`);
-        })
+            alert(`Error Message: ${error.message}`);
+        })
 });
