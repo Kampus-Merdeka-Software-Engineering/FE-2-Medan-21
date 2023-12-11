@@ -22,8 +22,8 @@ body{
   padding: 20px 25px;
   width: 300px;
 
-  background-color: rgba(0,0,0,.7);
-  box-shadow: 0 0 10px rgba(255,255,255,.3);
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px rgb(221, 29, 29);
 }
 .container h1{
   text-align: left;
@@ -34,7 +34,7 @@ body{
 }
 .container label{
   text-align: left;
-  color: #90caf9;
+  color: #ffffff;
 }
 .container form input{
   width: calc(100% - 20px);
@@ -50,9 +50,9 @@ body{
   width: 100%;
   padding: 5px 0;
   border: none;
-  background-color:#ffffff;
+  background-color:#9e451b;
   font-size: 18px;
-  color: #6a5e5e;
+  color: #ffffff;
 }
 .container p{
   text-align: center;
@@ -62,3 +62,17 @@ body{
 .container a{
   color: #90caf9;
 }
+
+.buttongg {
+  background-color: #9e451b; /* Warna latar belakang */
+  border: none; /* Tanpa border */
+  color: white; /* Warna teks */
+  padding: 15px 32px; /* Padding */
+  text-align: center; /* Posisi teks di tengah */
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; /* Ukuran font */
+  margin: 4px 2px;
+  cursor: pointer; /* Tampilan kursor saat dihover */
+  border-radius: 10px; /* Border radius */
+ }

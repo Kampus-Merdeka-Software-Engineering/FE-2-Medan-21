@@ -8,24 +8,25 @@
     <body>
         <div class="container">
           <h1>Register</h1>
-          <form id="registerForm">
+          <form action="" method="POST" id="registerForm">
                 <label>Name</label><br>
-                <input type="text"><br>
+                <input id="name" name="name" type="text"><br>
                 <label for="registerUsername">Username:</label>
-                <input type="text" id="registerUsername" required><br>
+                <input id="username" name="username" type="text" id="registerUsername" required><br>
                 <label>E-Mail</label><br>
-                <input type="email"><br>
+                <input id="email" name="email" type="email"><br>
                 <label for="registerPassword">Password:</label>
-                <input type="password" id="registerPassword" required> <br>
-                <button type="button" onclick="register()">Register</button>
+                <input id="password" name="password" type="password" id="registerPassword" required> <br>
+                <button class="buttongg" type="submit" onclick="register()">Register</button>
 
                 <p> Already Have An Account?
                     <a href="login.html">Click Here</a>
                   </p>
             </form>
-        </div>  
+        </div> 
         
-        <script>
+        <script src="js/registerjs.js">
+            /*
             // Simulasi basis data untuk menyimpan informasi pengguna
             var userDatabase = [];
     
@@ -62,6 +63,7 @@
                     alert("Registrasi berhasil!");
                 }
             }
+            */
         </script>
 
     </body>
